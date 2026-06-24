@@ -1,0 +1,514 @@
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+body, h1, h2, h3, p, ul, li {
+  font-family: 'Outfit', sans-serif;
+  
+}
+
+body {
+  background-color: #1a1a1a;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR */
+.special2 {
+  position: relative;
+  display: inline-block;
+  opacity: 1;
+  color: #fff;
+  padding: 2%;
+  background: linear-gradient(to left, #9a24e8, #26e0da);
+  border-radius: 0.5rem;
+}
+
+.special2:hover {
+  transform: scale(1.1); /* Slightly enlarges the element on hover */
+}
+
+
+
+.sidebar {
+  height: 100%;
+  width: 25%;
+  position: fixed;
+  background-color: #1a1a1a;
+  overflow-x: hidden;
+  z-index: 99;
+  border-right: 0.5px solid #333; 
+}
+
+.sidebarinsides {
+  padding: 20%;
+  padding-right: 15%;
+  padding-bottom: 0%;
+}
+
+.sidebar ul li {
+  transform: translateX(0px);
+  animation: fadeInSidebar 0.5s ease forwards;
+  padding-top: 25%;
+}
+
+.myname a {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.sidebarinsides ul {
+  list-style: none;
+  padding: 0%;
+  padding-top: 5%;
+}
+
+.sidebar ul li a {
+  color: #5c5c5c;
+  text-decoration: none;
+  font-size: 1rem;
+  display: block;
+  transition: color 0.3s ease;
+  display: inline; 
+}
+
+.sidebar ul li a:hover {
+  color: #fff;
+}
+
+.sidebar .sidebarinsides ul li a.active {
+  color: white;
+}
+
+.hwanglander {
+  color: #0e0e0e;
+  margin-top: 50%;
+  font-size: 1rem;
+}
+.popup-image {
+  display: none; 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.732);
+  z-index: 999;
+}
+/* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR *//* SIDEBAR */
+
+/* TOPBAR *//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*/
+.topbar {
+  display: none; 
+}
+.mediasidebar {
+  display: none;
+}
+
+/* Rest of your styles */
+
+/*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*//*TOPBAR*/
+
+/* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN */
+.main {
+  width: 75%;
+  margin-left: 25%;
+}
+
+.fnd {
+  text-align: center;
+  padding: 10%;
+  color: #fff;
+}
+
+.beggaremoji {
+  width: 30vw;
+  height: auto; 
+  display: block; 
+  margin: 0 auto;
+  padding: 10%;
+}
+/* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN *//* MAIN */
+
+/* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER */
+footer {
+  text-align: center;
+  padding: 5%;
+  justify-content: center;
+}
+
+.footermedia a {
+  color: #a3a3a3;
+  font-size: 1.3rem;
+  padding: 2%;
+}
+
+.copyright {
+  color: #a3a3a3;
+  font-size: 1rem;
+  padding-top: 5%;
+}
+/* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER *//* FOOTER */
+
+/* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA */
+
+@media screen and (min-width: 1024px) and (max-width: 1264px) {
+  .main {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .myname a {
+    font-size: 2.5rem;
+  }
+  .sidebar ul li {
+    padding-top: 35%;
+  }
+  
+  .fnd {
+    text-align: center;
+    padding: 10%;
+  }
+  
+  .beggaremoji {
+    width: 40vw;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 25%;
+  }
+  
+  .myname a {
+    font-size: 2.5rem;
+  }
+  .sidebarinsides {
+    padding-bottom: 0;
+  }
+
+  .main {
+    width: 75%;
+    height: 90vh;
+    margin-left: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .sidebar ul li {
+    padding-top: 35%;
+  }
+}
+
+@media screen and (max-width: 985px) {
+  .myname a {
+    font-size: 2rem;
+  }
+  .sidebar ul li {
+    padding-top: 35%;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .sidebar {
+    display: none;
+  }
+
+  .hwanglander2 {
+    color: #0e0e0e;
+    margin-top: 20%;
+    font-size: 1rem;
+  }
+
+  .main {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 5rem;
+  }
+
+  .topbar {
+    display: flex;
+    background-color: #1a1a1a;
+    color: #ffff;
+    align-items: center;
+
+  }
+  .topbar {
+    position: fixed;
+    width: 100%;
+    height: 5rem;
+    z-index: 10;
+    transition: transform 0.5s ease;
+  }
+  
+  .topbar.hidden {
+    transform: translateY(-100%);
+  }
+  
+  .topbar2 {
+    width: 100%;
+    padding: 5%;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+  }
+
+  .open {
+    font-size: 1.3rem;
+    color: #fff;
+  }
+
+  .open:hover {
+    cursor: pointer;
+  }
+
+  .sidebar2 {
+    padding: 5%;
+    padding-left: 13%;
+    padding-top: 3;
+  }
+
+  .mediasidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -100%; 
+    width: 100%;
+    height: 100vh; 
+    background-color: #1a1a1a;
+    color: #fff;
+    transition: left 0.3s ease;
+    z-index: 10; 
+  }
+
+  .popup-image2 {
+    display: none; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+  .overlay2 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.732);
+    z-index: 999;
+  }
+  
+  .myname2 {
+    text-align: left;
+  }
+
+  .myname2 a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 4rem;
+  }
+
+  .sidebarinsides2 {
+    padding: 5%;
+    padding-top: 0%;
+    color: #fff;
+    list-style: none;
+    text-align: left;
+  }
+  
+  .sidebarinsides2 ul {
+    list-style: none;
+    padding: 0%;
+  }
+
+  .sidebarinsides2 ul li {
+    padding-top: 20%;
+    font-size: 1rem;
+  }
+
+  .sidebarinsides2 ul li a{
+    list-style: none;
+    text-decoration: none;
+    color: #5c5c5c;
+  }
+
+  .sidebarinsides2 ul li a.active{
+    color: #fff ;
+  }
+
+  .close {
+    padding: 7%;
+    padding-bottom: 0;
+    font-size: 1.3rem;
+    color: #fff;
+  }
+
+  .close:hover {
+    cursor: pointer;
+  }
+  
+  .main {
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .fnd {
+    padding: 10%;
+    font-size: 1.3rem;
+  }
+  
+  .beggaremoji {
+    width: 50vw;
+  }
+
+  .footermedia a {
+    padding: 4%;
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 250px) {
+  .main {
+    display: none;
+  }
+
+  .hwanglander {
+    padding-top: 10%;
+  }
+
+  .topbar {
+    display: none;
+  }
+
+  .sidebar {
+    display: block;
+    width: 100%;
+  }
+
+  .sidebarinsides {
+  padding: 10%;
+  }
+
+  .myname a {
+    font-size: 2.5rem;
+  }
+
+    
+  .fnd {
+    padding: 20%;
+  }
+  
+  .beggaremoji {
+    width: 50vw;
+  }
+
+  .sidebarinsides ul {
+    padding: 4%;
+    padding-top: 5%;
+  }
+
+  .sidebar2 {
+    display: none;
+  }
+
+}
+/* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA *//* MEDIA */
+
+/* Responsive polish added for flexible desktop/tablet/mobile layouts */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 770px) {
+  .sidebar {
+    width: clamp(14rem, 25vw, 20rem);
+  }
+
+  .main {
+    width: calc(100% - clamp(14rem, 25vw, 20rem));
+    margin-left: clamp(14rem, 25vw, 20rem);
+  }
+
+  .myname a {
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    line-height: 1.05;
+  }
+}
+
+.main {
+  min-height: 100vh;
+  height: auto;
+}
+
+.fnd {
+  overflow-wrap: anywhere;
+}
+
+.beggaremoji {
+  width: clamp(10rem, 30vw, 24rem);
+  max-width: 85vw;
+}
+
+@media screen and (max-width: 769px) {
+  .main {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding-top: 5rem;
+    justify-content: flex-start;
+  }
+
+  .topbar,
+  .mediasidebar {
+    z-index: 100;
+  }
+
+  .topbar2 {
+    padding: 1rem clamp(1rem, 5vw, 2rem);
+  }
+
+  .myname2 a {
+    font-size: clamp(2.7rem, 14vw, 4rem);
+    line-height: 0.95;
+  }
+}
+
+@media screen and (max-width: 250px) {
+  .main,
+  .topbar {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
+

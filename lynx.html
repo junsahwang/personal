@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Junsa Hwang | RelayOps Agency</title>
+<link rel="stylesheet" href="css/lynx.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="icon" type="image/png" href="imgs/jh.png">
+<link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+</head>
+<body>
+
+<div class="sidebar">
+<div class="sidebarinsides">
+<div class="myname">
+<a href="index.html">JUNSA HWANG</a>
+</div>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="resume.html">Resume</a></li>
+<li><a href="lynx.html" class="active">RelayOps Agency</a></li>
+<li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=junsaemail@gmail.com" target="_blank" rel="noopener noreferrer" class="special2" style="color: #fff; font-size: 1rem; padding-left: 5%; padding-right: 5%;">Contact</a></li>
+</ul>
+<a href="#" style="text-decoration:none;color:inherit" onclick="showPopup(event)">
+<p class="hwanglander">(i am hwanglander)</p>
+</a>
+<div class="overlay" onclick="hidePopup()"></div>
+<div class="popup-image">
+<img src="imgs/hwanglander.png" alt="hwanglander" style="max-width:100%;max-height:80vh" draggable="false">
+</div>
+<audio id="popupAudio" src="audios/icandoanything.mp3" preload="auto"></audio>
+</div>
+</div>
+
+<div class="topbar" id="topbar">
+<div class="topbar2">
+<div class="open" onclick="openMediasidebar()">
+<i class="fas fa-bars"></i>
+</div>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=junsaemail@gmail.com" target="_blank" rel="noopener noreferrer" class="special2 top-contact" style="color:#fff;text-decoration:none;font-size:1rem;display:block;transition:color .3s ease;display:inline">Contact</a>
+</div>
+</div>
+
+<div class="mediasidebar" id="mediasidebar">
+<div class="close" onclick="closeMediasidebar()">
+<i class="fas fa-arrow-left"></i>
+</div>
+<div class="sidebar2">
+<div class="sidebarinsides2">
+<div class="myname2">
+<a href="index.html">JUNSA<br>HWANG</a>
+</div>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="resume.html">Resume</a></li>
+<li><a href="lynx.html" class="active">RelayOps Agency</a></li>
+</ul>
+<a href="#" style="text-decoration:none;color:inherit" onclick="showPopup2(event)">
+<p class="hwanglander2">(i am hwanglander)</p>
+</a>
+<div class="overlay2" onclick="hidePopup2()"></div>
+<div class="popup-image2">
+<img src="imgs/hwanglander.png" alt="hwanglander" style="max-width:100%;max-height:80vh" draggable="false">
+</div>
+<audio id="popupAudio2" src="audios/icandoanything.mp3" preload="auto"></audio>
+</div>
+</div>
+</div>
+
+<main class="main">
+<section class="hero">
+<div class="hero-copy">
+<h1><span>RelayOps</span><span>Agency.</span></h1>
+<p class="hero-kicker">Turn missed calls into real clients.</p>
+<p class="hero-subtitle">I build AI workflows that catch new leads, follow up quickly, connect your apps, and keep the admin work moving while store owners focus on their craft.</p>
+<div class="hero-actions">
+<a href="#contact-form" class="primary-action">Start a workflow audit</a>
+<a href="#modules" class="secondary-action">See how it works</a>
+</div>
+</div>
+
+<div class="automation-visual" aria-label="Automation modules connecting business apps">
+<div class="signal-card call-card">
+<i class="fas fa-phone-alt"></i>
+<span>Missed call</span>
+</div>
+<div class="signal-card chat-card">
+<i class="fas fa-comment-dots"></i>
+<span>New message</span>
+</div>
+<div class="hub">
+<span class="hub-ring"></span>
+<i class="fas fa-brain"></i>
+<strong>AI Relay</strong>
+</div>
+<div class="module-grid">
+<div><i class="fas fa-calendar-check"></i><span>Booking</span></div>
+<div><i class="fas fa-envelope-open-text"></i><span>Follow-up</span></div>
+<div><i class="fas fa-tasks"></i><span>Tasks</span></div>
+<div><i class="fas fa-user-check"></i><span>CRM</span></div>
+</div>
+</div>
+</section>
+
+<section class="problem-strip">
+<div>
+<span>01</span>
+<h2>Leads slip away when no one answers.</h2>
+<p>Calls, DMs, forms, and quote requests can arrive while you are with a client, preparing orders, driving between jobs, or running the floor.</p>
+</div>
+<div>
+<span>02</span>
+<h2>Admin work eats the day.</h2>
+<p>Scheduling, reminders, intake questions, status updates, spreadsheets, and manual follow-ups pull owners away from their craft.</p>
+</div>
+<div>
+<span>03</span>
+<h2>RelayOps connects the moving parts.</h2>
+<p>I build modular automations across the apps you already use so every inquiry has a clean path from first touch to real client.</p>
+</div>
+</section>
+
+<section class="modules-section" id="modules">
+<div class="section-heading">
+<p class="eyebrow">Multiple modules, one calmer operation</p>
+<h2>Your apps start working together.</h2>
+<p>Each module handles one part of the client journey, then passes the right information to the next system automatically.</p>
+</div>
+<div class="modules">
+<article class="module-card">
+<i class="fas fa-headset"></i>
+<h3>Lead Capture</h3>
+<p>Missed calls, website forms, texts, and social messages can trigger instant replies so prospects know they were heard.</p>
+</article>
+<article class="module-card">
+<i class="fas fa-clipboard-list"></i>
+<h3>Smart Intake</h3>
+<p>AI collects the details you need, qualifies the request, and keeps the conversation moving without making clients wait.</p>
+</article>
+<article class="module-card">
+<i class="fas fa-calendar-alt"></i>
+<h3>Scheduling</h3>
+<p>Booking links, calendar updates, reminders, and reschedules can happen in the background with fewer manual back-and-forths.</p>
+</article>
+<article class="module-card">
+<i class="fas fa-project-diagram"></i>
+<h3>App Connections</h3>
+<p>CRM, email, spreadsheets, calendars, payment tools, and task boards can share information instead of creating duplicate work.</p>
+</article>
+</div>
+</section>
+
+<section class="owner-focus">
+<div class="focus-copy">
+<p class="eyebrow">Built for store owners and service teams</p>
+<h2>Stay focused on the craft, not the chase.</h2>
+<p>Your business should not depend on remembering every message, copying every detail, and manually nudging every prospect. RelayOps creates a clean operational layer around the work you already do.</p>
+</div>
+<div class="focus-list">
+<div><i class="fas fa-check"></i><span>Respond faster to potential clients</span></div>
+<div><i class="fas fa-check"></i><span>Reduce planning and logistics clutter</span></div>
+<div><i class="fas fa-check"></i><span>Keep client details organized across apps</span></div>
+<div><i class="fas fa-check"></i><span>Convert interest into real appointments and jobs</span></div>
+</div>
+</section>
+
+<section class="flow-section">
+<div class="flow-step">
+<span>1</span>
+<h3>Catch</h3>
+<p>A prospect calls, messages, or submits a form.</p>
+</div>
+<div class="flow-line"></div>
+<div class="flow-step">
+<span>2</span>
+<h3>Reply</h3>
+<p>AI responds, asks useful questions, and gathers context.</p>
+</div>
+<div class="flow-line"></div>
+<div class="flow-step">
+<span>3</span>
+<h3>Route</h3>
+<p>The right details move into your calendar, CRM, task board, or inbox.</p>
+</div>
+<div class="flow-line"></div>
+<div class="flow-step">
+<span>4</span>
+<h3>Convert</h3>
+<p>The lead becomes a scheduled appointment, quote, or client.</p>
+</div>
+</section>
+
+<section class="form-section" id="contact-form">
+<div class="section-heading">
+<p class="eyebrow">Ready to stop losing good leads?</p>
+<h2>Tell me where your business gets stuck.</h2>
+<p>I will look at the calls, messages, apps, and repetitive tasks in your workflow and map out where automation can help.</p>
+</div>
+<div class="jokeform">
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd7aZQMLSV_h-K0yDeBQywVLyqJmn-HgFwrJY4Ac4AnqIb6jw/viewform?embedded=true" title="RelayOps Agency inquiry form">Loading...</iframe>
+</div>
+</section>
+
+<footer>
+<div class="footermedia">
+<a href="https://www.instagram.com/junsahwang/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+<a href="https://www.facebook.com/junsa.hwang/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+<a href="https://www.linkedin.com/in/junsa-hwang-218805213/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+</div>
+<div class="copyright">
+&copy; 2025 JUNSA HWANG
+</div>
+</footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
