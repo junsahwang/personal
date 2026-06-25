@@ -164,8 +164,41 @@ a { color: inherit; }
    HERO
    ================================================================= */
 .hero {
+  position: relative;
   padding-block: clamp(4rem, 14vh, 9rem) clamp(3rem, 9vw, 6rem);
 }
+
+/* Cursor-following glow behind the hero (set via --mx/--my in JS) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -10% -20%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    420px circle at var(--mx, 30%) var(--my, 30%),
+    rgba(232, 162, 60, 0.16),
+    rgba(232, 162, 60, 0.05) 40%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.hero.glow-on::before { opacity: 1; }
+
+/* Hover-to-pop letters on the hero name */
+.hero-name .ltr {
+  display: inline-block;
+  transition: transform 0.3s var(--ease), color 0.3s ease;
+}
+
+.hero-name .ltr:hover {
+  transform: translateY(-0.12em);
+  color: var(--accent);
+}
+
+.hero-name .ltr.space { width: 0.28em; }
 
 .hero-greet {
   color: var(--text-dim);
@@ -263,21 +296,48 @@ a { color: inherit; }
   gap: 1.25rem;
 }
 
+.paths { perspective: 1000px; }
+
 .path-card {
+  position: relative;
   display: block;
   text-decoration: none;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 2rem;
+  overflow: hidden;
+  transform-style: preserve-3d;
   transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), background 0.4s ease;
 }
 
+/* Cursor sheen following the pointer across the card (--cx/--cy in JS) */
+.path-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    240px circle at var(--cx, 50%) var(--cy, 50%),
+    rgba(243, 200, 120, 0.12),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
 .path-card:hover {
-  transform: translateY(-6px);
   border-color: var(--accent);
   background: var(--bg-elev-2);
 }
+
+.path-card:hover::after { opacity: 1; }
+
+/* Children lift toward the viewer on tilt for subtle depth */
+.path-card > * { transform: translateZ(28px); }
+
+/* Fallback lift when JS tilt isn't active (reduced motion / no pointer) */
+.path-card.no-tilt:hover { transform: translateY(-6px); }
 
 .path-card .path-k {
   font-size: 0.78rem;

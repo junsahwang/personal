@@ -102,6 +102,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2400);
   }
 
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* Hero name → per-letter spans for hover pop */
+  const heroName = document.querySelector('.hero-name');
+  if (heroName && !heroName.dataset.split) {
+    heroName.dataset.split = '1';
+    const text = heroName.textContent;
+    heroName.textContent = '';
+    [...text].forEach((ch) => {
+      const span = document.createElement('span');
+      span.className = ch === ' ' ? 'ltr space' : 'ltr';
+      span.textContent = ch === ' ' ? ' ' : ch;
+      heroName.appendChild(span);
+    });
+  }
+
+  /* Cursor-following glow in the hero */
+  const hero = document.querySelector('.hero');
+  if (hero && finePointer && !reduceMotion) {
+    hero.addEventListener('pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width) * 100 + '%');
+      hero.style.setProperty('--my', ((e.clientY - r.top) / r.height) * 100 + '%');
+      hero.classList.add('glow-on');
+    });
+    hero.addEventListener('pointerleave', () => hero.classList.remove('glow-on'));
+  }
+
+  /* Path cards → 3D tilt toward the cursor + sheen */
+  document.querySelectorAll('.path-card').forEach((card) => {
+    if (!finePointer || reduceMotion) { card.classList.add('no-tilt'); return; }
+    const MAX = 7; // degrees
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      const rx = (0.5 - py) * 2 * MAX;
+      const ry = (px - 0.5) * 2 * MAX;
+      card.style.transform =
+        `translateY(-6px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      card.style.setProperty('--cx', px * 100 + '%');
+      card.style.setProperty('--cy', py * 100 + '%');
+    });
+    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+  });
+
   /* Carousel drag-to-scroll */
   const track = document.getElementById('carouselTrack');
   if (track) {
