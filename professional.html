@@ -41,13 +41,14 @@
 <!-- EXPERIENCE -->
 <section class="section wrap reveal">
 <p class=eyebrow>Experience</p>
-<h2 class=section-title>Where I've worked</h2>
+<h2 class=section-title>What I've worked on</h2>
 <div style="margin-top:2rem">
 
 <div class=exp-item>
 <div>
 <div class=exp-role>CAD &amp; On-site Testing Intern</div>
 <div class=exp-org>Building Envelope Materials</div>
+<div class=exp-date>June 2025 – August 2025</div>
 </div>
 <div class=exp-body>
 <ul>
@@ -61,6 +62,7 @@
 <div>
 <div class=exp-role>Co-Founder</div>
 <div class=exp-org>Lynx Media Group</div>
+<div class=exp-date>June 2026 – Present</div>
 </div>
 <div class=exp-body>
 <p>Building Lynx to connect solo creators with brands through authentic content that actually reaches modern audiences.</p>
@@ -71,6 +73,7 @@
 <div>
 <div class=exp-role>E-Board &amp; Build Lead</div>
 <div class=exp-org>BU Unmanned Aerial Vehicles Club</div>
+<div class=exp-date>January 2025 – Present</div>
 </div>
 <div class=exp-body>
 <ul>
@@ -85,6 +88,7 @@
 <div>
 <div class=exp-role>Founder</div>
 <div class=exp-org>QueueCube</div>
+<div class=exp-date>November 2022 – May 2024</div>
 </div>
 <div class=exp-body>
 <p>Built a live queueing web app for public tennis courts and worked with city officials and vendors to prep the rollout hardware.</p>
@@ -126,7 +130,7 @@
 </div>
 
 <div class=proj-card>
-<div class=proj-ph><span class=ph-icon>&#128640;</span><span class=ph-tag>UAV &middot; Infrared</span></div>
+<img src=imgs/projects/searchrescue-drone.png alt="Search and rescue drone" loading=lazy>
 <div class=proj-body>
 <h3>Search &amp; Rescue Drone</h3>
 <p>Infrared-guided UAV platform for heat-signature detection.</p>
@@ -134,20 +138,12 @@
 </div>
 
 <div class=proj-card>
-<div class=proj-ph><span class=ph-icon>&#127934;</span><span class=ph-tag>Web app &middot; 500+ users</span></div>
+<img src=imgs/projects/queuecube.jpg alt="QueueCube prototypes cut from PVC sheet" loading=lazy>
 <div class=proj-body>
 <h3>QueueCube</h3>
-<p>Smart tennis-court queueing system, tested in Sunnyvale parks.</p>
+<p>Smart tennis-court queueing system, tested in Sunnyvale parks. Pictured: me prototyping the early tap-to-queue units, cut from PVC sheet.</p>
 </div>
 </div>
-
-<a class=proj-card href="https://www.svcoc.org/2022/11/07/homestead-fbla-club-wins-1st-place/" target=_blank rel=noopener>
-<img src=imgs/projects/projects2.png alt="FBLA national finalist" loading=lazy>
-<div class=proj-body>
-<h3>FBLA — Partnership with Business</h3>
-<p>National finalist, top 3 of 12,000 competitors — 2022.</p>
-</div>
-</a>
 
 </div>
 </section>
@@ -194,15 +190,18 @@
 <div class="footer-inner wrap">
 <div>
 <div class=footer-name>Junsa Hwang</div>
-<div class=footer-copy>&copy; 2025 Junsa Hwang — Engineering PROGRESS.</div>
+<div class=footer-copy>&copy; 2026 Junsa Hwang &middot; <span class=egg onclick=showEgg() title="(i am hwanglander)">(i am hwanglander)</span></div>
 </div>
 <div class=footer-socials>
 <a href=https://www.instagram.com/junsahwang/ target=_blank rel=noopener aria-label=Instagram><i class="fab fa-instagram"></i></a>
-<a href=https://www.facebook.com/junsa.hwang/ target=_blank rel=noopener aria-label=Facebook><i class="fab fa-facebook"></i></a>
 <a href=https://www.linkedin.com/in/junsa-hwang-218805213/ target=_blank rel=noopener aria-label=LinkedIn><i class="fab fa-linkedin"></i></a>
 </div>
 </div>
 </footer>
+
+<div class=egg-overlay id=eggOverlay onclick=hideEgg()></div>
+<div class=egg-pop id=eggPop><img src=imgs/hwanglander.png alt=hwanglander draggable=false></div>
+<audio id=eggAudio src=audios/icandoanything.mp3 preload=auto></audio>
 
 <script src=app.js></script>
 </body>

@@ -118,16 +118,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* Cursor-following glow in the hero */
-  const hero = document.querySelector('.hero');
-  if (hero && finePointer && !reduceMotion) {
-    hero.addEventListener('pointermove', (e) => {
-      const r = hero.getBoundingClientRect();
-      hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width) * 100 + '%');
-      hero.style.setProperty('--my', ((e.clientY - r.top) / r.height) * 100 + '%');
-      hero.classList.add('glow-on');
-    });
-    hero.addEventListener('pointerleave', () => hero.classList.remove('glow-on'));
+  /* Cursor-following glow across the whole page */
+  if (finePointer && !reduceMotion) {
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    document.body.appendChild(glow);
+    let raf = 0;
+    document.addEventListener('pointermove', (e) => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        glow.style.setProperty('--mx', (e.clientX / window.innerWidth) * 100 + '%');
+        glow.style.setProperty('--my', (e.clientY / window.innerHeight) * 100 + '%');
+        glow.classList.add('glow-on');
+        raf = 0;
+      });
+    }, { passive: true });
+    document.addEventListener('pointerleave', () => glow.classList.remove('glow-on'));
+    window.addEventListener('blur', () => glow.classList.remove('glow-on'));
   }
 
   /* Path cards → 3D tilt toward the cursor + sheen */

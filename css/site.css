@@ -168,16 +168,16 @@ a { color: inherit; }
   padding-block: clamp(4rem, 14vh, 9rem) clamp(3rem, 9vw, 6rem);
 }
 
-/* Cursor-following glow behind the hero (set via --mx/--my in JS) */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: -10% -20%;
+/* Cursor-following glow — fixed to the viewport so it spans the whole
+   page without being clipped to any section (--mx/--my set in JS). */
+.cursor-glow {
+  position: fixed;
+  inset: 0;
   z-index: -1;
   pointer-events: none;
   background: radial-gradient(
-    420px circle at var(--mx, 30%) var(--my, 30%),
-    rgba(232, 162, 60, 0.16),
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(232, 162, 60, 0.14),
     rgba(232, 162, 60, 0.05) 40%,
     transparent 70%
   );
@@ -185,7 +185,7 @@ a { color: inherit; }
   transition: opacity 0.5s ease;
 }
 
-.hero.glow-on::before { opacity: 1; }
+.cursor-glow.glow-on { opacity: 1; }
 
 /* Hover-to-pop letters on the hero name */
 .hero-name .ltr {
@@ -656,6 +656,7 @@ a { color: inherit; }
 
 .exp-role { font-weight: 600; font-size: 1.1rem; }
 .exp-org { color: var(--accent); font-size: 0.9rem; margin-top: 0.2rem; }
+.exp-date { color: var(--text-muted); font-size: 0.82rem; margin-top: 0.3rem; }
 .exp-body p { color: var(--text-dim); }
 .exp-body ul { color: var(--text-dim); margin: 0.5rem 0 0; padding-left: 1.1rem; }
 .exp-body li { margin-bottom: 0.35rem; }
