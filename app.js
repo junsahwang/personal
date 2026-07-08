@@ -1,6 +1,6 @@
 /* =================================================================
    Junsa Hwang — site interactions
-   Preloader, aurora atmosphere, magnetic UI, scroll progress +
+   Preloader, aurora atmosphere, scroll progress +
    reveal, count-up, hero rotator + char reveal, signature draw-in,
    parallax, tilt cards, carousel, and the hwanglander egg.
    ================================================================= */
@@ -204,20 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
     document.addEventListener('pointerleave', () => glow.classList.remove('glow-on'));
     window.addEventListener('blur', () => glow.classList.remove('glow-on'));
-  }
-
-  /* ---- Magnetic buttons + nav name ---- */
-  if (finePointer && !reduceMotion) {
-    document.querySelectorAll('[data-magnetic], .btn').forEach((el) => {
-      const strength = 0.32;
-      el.addEventListener('pointermove', (e) => {
-        const r = el.getBoundingClientRect();
-        const x = (e.clientX - r.left - r.width / 2) * strength;
-        const y = (e.clientY - r.top - r.height / 2) * strength;
-        el.style.transform = `translate(${x}px, ${y}px)`;
-      });
-      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
-    });
   }
 
   /* ---- Path cards → 3D tilt toward cursor + sheen ---- */
