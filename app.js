@@ -1,8 +1,8 @@
 /* =================================================================
    Junsa Hwang — site interactions
-   Preloader, custom cursor, aurora atmosphere, magnetic UI, scroll
-   progress + reveal, count-up, hero rotator + char reveal, signature
-   draw-in, parallax, tilt cards, carousel, and the hwanglander egg.
+   Preloader, aurora atmosphere, magnetic UI, scroll progress +
+   reveal, count-up, hero rotator + char reveal, signature draw-in,
+   parallax, tilt cards, carousel, and the hwanglander egg.
    ================================================================= */
 
 /* ---- Carousel arrow controls (global, used by inline onclick) ---- */
@@ -136,19 +136,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2400);
   }
 
-  /* ---- Hero name → per-letter spans (hover pop + intro reveal) ---- */
+  /* ---- Hero name → per-letter spans, grouped by word so lines
+         only break between words (hover pop + intro reveal) ---- */
   document.querySelectorAll('.hero-name').forEach((heroName) => {
     if (heroName.dataset.split) return;
     heroName.dataset.split = '1';
     const doReveal = heroName.classList.contains('reveal-chars') && !reduceMotion;
     const text = heroName.textContent;
     heroName.textContent = '';
-    [...text].forEach((ch, idx) => {
-      const span = document.createElement('span');
-      span.className = ch === ' ' ? 'ltr space' : 'ltr';
-      span.textContent = ch === ' ' ? ' ' : ch;
-      if (doReveal) span.style.setProperty('--i', idx);
-      heroName.appendChild(span);
+    let idx = 0;
+    text.split(' ').forEach((word, w, words) => {
+      const wd = document.createElement('span');
+      wd.className = 'wd';
+      [...word].forEach((ch) => {
+        const span = document.createElement('span');
+        span.className = 'ltr';
+        span.textContent = ch;
+        if (doReveal) span.style.setProperty('--i', idx);
+        idx++;
+        wd.appendChild(span);
+      });
+      heroName.appendChild(wd);
+      if (w < words.length - 1) {
+        const sp = document.createElement('span');
+        sp.className = 'ltr space';
+        sp.textContent = ' ';
+        idx++;
+        heroName.appendChild(sp);
+      }
     });
   });
 
@@ -170,38 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { threshold: 0.4 });
       sObs.observe(sig);
     }
-  }
-
-  /* ---- Custom cursor (fine pointers) ---- */
-  if (finePointer && !reduceMotion) {
-    const dot = document.createElement('div');
-    const ring = document.createElement('div');
-    dot.className = 'cursor-dot';
-    ring.className = 'cursor-ring';
-    document.body.append(dot, ring);
-    document.body.classList.add('custom-cursor');
-    let rx = window.innerWidth / 2, ry = window.innerHeight / 2, mx = rx, my = ry;
-    document.addEventListener('pointermove', (e) => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
-      document.body.classList.add('cursor-ready');
-    }, { passive: true });
-    const loop = () => {
-      rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
-      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-      requestAnimationFrame(loop);
-    };
-    requestAnimationFrame(loop);
-    const interactive = 'a, button, .path-card, .proj-card, .carousel-item, .life-card, .chip, .egg, input, textarea';
-    document.addEventListener('pointerover', (e) => {
-      if (e.target.closest(interactive)) ring.classList.add('hovering');
-    });
-    document.addEventListener('pointerout', (e) => {
-      if (e.target.closest(interactive)) ring.classList.remove('hovering');
-    });
-    document.addEventListener('pointerdown', () => ring.classList.add('pressing'));
-    document.addEventListener('pointerup', () => ring.classList.remove('pressing'));
-    document.addEventListener('pointerleave', () => document.body.classList.remove('cursor-ready'));
   }
 
   /* ---- Cursor-following page glow ---- */
