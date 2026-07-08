@@ -10,16 +10,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset=UTF-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=theme-color content="#0b0b0d">
 <meta name=description content="Junsa Hwang is a mechanical engineering student at Boston University building things that move — robotics, control systems, and endurance sport. (i am hwanglander)">
 <meta name=keywords content="junsa hwang, junsa, hwang, hwanglander, mechanical engineering, boston university, robotics, portfolio">
 <meta property="og:title" content="Junsa Hwang">
 <meta property="og:description" content="Mechanical engineering student at Boston University. Engineering PROGRESS.">
 <meta property="og:image" content="https://www.junsahwang.com/imgs/home/home1.png">
 <title>Junsa Hwang</title>
-<link rel=stylesheet href=css/site.css>
 <link rel=preconnect href=https://fonts.googleapis.com>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel=stylesheet>
+<link rel=stylesheet href=css/site.css>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css>
 <link rel="icon" type="image/svg+xml" href="imgs/jh.svg">
 <link rel="icon" type="image/png" href="imgs/jh.png">
@@ -39,11 +40,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WFK8CMJ7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+<div class=preloader id=preloader>
+<div class=pl-mark><span>J</span><span>H</span><span class=pl-dot>.</span></div>
+<div class=pl-bar></div>
+</div>
+
 <div class=progress id=progress></div>
 
 <header class=nav>
 <div class=nav-inner>
-<a class=nav-name href=index.html>Junsa Hwang</a>
+<a class=nav-name href=index.html data-magnetic><span class=nav-glyph>❋</span><span class=nav-word> Junsa Hwang</span></a>
 <nav class=nav-links>
 <a href=professional.html>Professional</a>
 <a href=personal.html>Personal</a>
@@ -53,23 +59,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 
 <main>
-<section class="hero wrap">
+<section class="hero hero-home wrap">
 <p class=hero-greet>Hi, I'm</p>
-<h1 class=hero-name>Junsa Hwang</h1>
-<p class=hero-rotator>Junsa is <span class=word id=rotator>goated</span></p>
+<h1 class="hero-name reveal-chars">Junsa Hwang</h1>
+<p class=hero-rotator>Junsa is <span class=word id=rotator data-words="goated,unbelievably handsome,an Ironman,amazing,relentless">goated</span></p>
 <p class=hero-lead>A mechanical engineering student at Boston University who likes designing, building, and leading projects that bridge creativity with real-world impact — from robotics and control systems to long days of triathlon training.</p>
 <p class=hero-note>Built with love &#9881;&#65039;&#128640;&#127907;</p>
+<img class=hero-sig src=imgs/home/signature.png alt="Junsa Hwang's signature" width=1577 height=653>
 <div class=btn-row>
 <a class="btn btn-primary" href=professional.html>See my work <i class="fas fa-arrow-right"></i></a>
 <a class="btn btn-ghost" href=contact.html>Write me a letter</a>
 </div>
+<span class=scroll-cue><span class=dot></span> Scroll</span>
 </section>
+
+<div class="marquee reveal">
+<div class=marquee-track>
+<span class=marquee-item>Robotics</span>
+<span class=marquee-item>Control Systems</span>
+<span class=marquee-item>CAD</span>
+<span class=marquee-item>Drones</span>
+<span class=marquee-item>Triathlon</span>
+<span class=marquee-item>Violin</span>
+<span class=marquee-item>Leadership</span>
+<span class=marquee-item>Progress</span>
+<span class=marquee-item>Robotics</span>
+<span class=marquee-item>Control Systems</span>
+<span class=marquee-item>CAD</span>
+<span class=marquee-item>Drones</span>
+<span class=marquee-item>Triathlon</span>
+<span class=marquee-item>Violin</span>
+<span class=marquee-item>Leadership</span>
+<span class=marquee-item>Progress</span>
+</div>
+</div>
 
 <section class="section wrap reveal">
 <p class=eyebrow>Two sides</p>
 <h2 class=section-title>Pick a path</h2>
 <p class=section-sub>The engineer who ships projects, and the person off the clock. Both are me.</p>
-<div class=paths style="margin-top:2rem">
+<div class="paths stagger" style="margin-top:2.25rem">
 <a class=path-card href=professional.html>
 <div class=path-k>01 — On the clock</div>
 <h3>Professional</h3>
@@ -82,6 +111,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Triathlon, violin since age six, documenting my life, and the things I do for the love of it.</p>
 <span class=arrow>Explore <i class="fas fa-arrow-right"></i></span>
 </a>
+</div>
+</section>
+
+<section class="section wrap reveal">
+<div class=cta-band>
+<h2>Let's engineer<br><a href=contact.html>progress</a> together.</h2>
+<p>Building something, hiring, or just curious? My inbox is open.</p>
+<div class=btn-row style="justify-content:center;margin-top:2rem">
+<a class="btn btn-primary" href=contact.html>Get in touch <i class="fas fa-arrow-right"></i></a>
+</div>
 </div>
 </section>
 </main>

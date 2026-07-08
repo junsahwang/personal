@@ -3,22 +3,28 @@
 <head>
 <meta charset=UTF-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=theme-color content="#0b0b0d">
 <meta name=description content="Get in touch with Junsa Hwang — say hi, share an idea, or talk about a project.">
 <title>Junsa Hwang | Contact</title>
-<link rel=stylesheet href=css/site.css>
 <link rel=preconnect href=https://fonts.googleapis.com>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel=stylesheet>
+<link rel=stylesheet href=css/site.css>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css>
 <link rel="icon" type="image/svg+xml" href="imgs/jh.svg">
 <link rel="icon" type="image/png" href="imgs/jh.png">
 </head>
 <body>
+<div class=preloader id=preloader>
+<div class=pl-mark><span>J</span><span>H</span><span class=pl-dot>.</span></div>
+<div class=pl-bar></div>
+</div>
+
 <div class=progress id=progress></div>
 
 <header class=nav>
 <div class=nav-inner>
-<a class=nav-name href=index.html>Junsa Hwang</a>
+<a class=nav-name href=index.html data-magnetic><span class=nav-glyph>❋</span><span class=nav-word> Junsa Hwang</span></a>
 <nav class=nav-links>
 <a href=professional.html>Professional</a>
 <a href=personal.html>Personal</a>
@@ -30,7 +36,7 @@
 <main>
 <section class="hero wrap">
 <p class=eyebrow>Contact</p>
-<h1 class=hero-name>Say hello</h1>
+<h1 class="hero-name reveal-chars">Say hello</h1>
 <p class=hero-lead>Got an idea, a project, or just want to chat? I'd love to hear from you. The fastest way to reach me is a quick email.</p>
 </section>
 
@@ -46,7 +52,7 @@
 <section class="section wrap reveal">
 <p class=eyebrow>Elsewhere</p>
 <h2 class=section-title>Find me online</h2>
-<div class=chips style="margin-top:1.5rem">
+<div class="chips stagger" style="margin-top:1.5rem">
 <a class=chip href=https://www.instagram.com/junsahwang/ target=_blank rel=noopener><i class="fab fa-instagram"></i> &nbsp;Instagram</a>
 <a class=chip href=https://www.linkedin.com/in/junsa-hwang-218805213/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> &nbsp;LinkedIn</a>
 </div>

@@ -3,22 +3,28 @@
 <head>
 <meta charset=UTF-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=theme-color content="#0b0b0d">
 <meta name=description content="Junsa Hwang's professional work — mechanical engineering projects, experience, and skills in CAD, control systems, robotics, and drones.">
 <title>Junsa Hwang | Professional</title>
-<link rel=stylesheet href=css/site.css>
 <link rel=preconnect href=https://fonts.googleapis.com>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel=stylesheet>
+<link rel=stylesheet href=css/site.css>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css>
 <link rel="icon" type="image/svg+xml" href="imgs/jh.svg">
 <link rel="icon" type="image/png" href="imgs/jh.png">
 </head>
 <body>
+<div class=preloader id=preloader>
+<div class=pl-mark><span>J</span><span>H</span><span class=pl-dot>.</span></div>
+<div class=pl-bar></div>
+</div>
+
 <div class=progress id=progress></div>
 
 <header class=nav>
 <div class=nav-inner>
-<a class=nav-name href=index.html>Junsa Hwang</a>
+<a class=nav-name href=index.html data-magnetic><span class=nav-glyph>❋</span><span class=nav-word> Junsa Hwang</span></a>
 <nav class=nav-links>
 <a href=professional.html aria-current=page>Professional</a>
 <a href=personal.html>Personal</a>
@@ -30,11 +36,21 @@
 <main>
 <section class="hero wrap">
 <p class=eyebrow>Professional</p>
-<h1 class=hero-name>On the clock</h1>
-<p class=hero-lead>I'm a Mechanical Engineering student at Boston University focused on robotics and control systems — designing, prototyping, and leading projects that bridge creativity with real-world impact. My goal is to engineer <span class=accent>PROGRESS</span>.</p>
+<h1 class="hero-name reveal-chars">On the clock</h1>
+<p class=hero-lead>I'm a Mechanical Engineering student at Boston University focused on robotics and control systems — designing, prototyping, and leading projects that bridge creativity with real-world impact. My goal is to engineer <span class="accent serif" style="font-style:italic">progress</span>.</p>
 <div class=btn-row>
 <a class="btn btn-primary" href="imgs/resume/resume1.png" target=_blank rel=noopener><i class="fas fa-download"></i> Resume</a>
 <a class="btn btn-ghost" href=contact.html>Get in touch</a>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="section wrap reveal">
+<div class="stats-grid stagger">
+<div class=stat><div class=stat-num data-target=100 data-suffix="+">0</div><div class=stat-label>UAV club members mentored</div></div>
+<div class=stat><div class=stat-num data-target=5>0</div><div class=stat-label>Hardware + software projects shipped</div></div>
+<div class=stat><div class=stat-num data-target=2>0</div><div class=stat-label>Ventures co-founded</div></div>
+<div class=stat><div class=stat-num data-target=2028>0</div><div class=stat-label>B.S. Mechanical Engineering, BU</div></div>
 </div>
 </section>
 
@@ -42,7 +58,7 @@
 <section class="section wrap reveal">
 <p class=eyebrow>Experience</p>
 <h2 class=section-title>What I've worked on</h2>
-<div style="margin-top:2rem">
+<div style="margin-top:2.25rem">
 
 <div class=exp-item>
 <div>
@@ -103,9 +119,10 @@
 <p class=eyebrow>Selected work</p>
 <h2 class=section-title>Projects</h2>
 <p class=section-sub>Hardware, software, and the messy fun of getting things to actually behave.</p>
-<div class=proj-grid>
+<div class="proj-grid stagger">
 
 <a class=proj-card href="https://www.youtube.com/watch?v=6DbGjyQqbzY&t=1s" target=_blank rel=noopener>
+<span class=proj-tag>C++ · Servos</span>
 <img src=imgs/projects/projects3.webp alt="Robotic arm" loading=lazy>
 <div class=proj-body>
 <h3>Robotic Arm</h3>
@@ -114,6 +131,7 @@
 </a>
 
 <a class=proj-card href="https://lynxmediagroup.org/" target=_blank rel=noopener>
+<span class=proj-tag>Venture</span>
 <img src=imgs/projects/projects10.png alt="Lynx Media Group" loading=lazy>
 <div class=proj-body>
 <h3>Lynx Media Group</h3>
@@ -130,6 +148,7 @@
 </div>
 
 <div class=proj-card>
+<span class=proj-tag>UAV · Infrared</span>
 <img src=imgs/projects/searchrescue-drone.png alt="Search and rescue drone" loading=lazy>
 <div class=proj-body>
 <h3>Search &amp; Rescue Drone</h3>
@@ -138,6 +157,7 @@
 </div>
 
 <div class=proj-card>
+<span class=proj-tag>Hardware · Web</span>
 <img src=imgs/projects/queuecube.jpg alt="QueueCube prototypes cut from PVC sheet" loading=lazy>
 <div class=proj-body>
 <h3>QueueCube</h3>
@@ -182,6 +202,14 @@
 <li>GPA: 3.3</li>
 </ul>
 </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="section wrap reveal">
+<div class=cta-band>
+<h2>Like what you see?<br><a href=contact.html>Let's talk.</a></h2>
+<p>Internships, projects, or a good idea — I answer everything.</p>
 </div>
 </section>
 </main>

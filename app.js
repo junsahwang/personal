@@ -1,7 +1,8 @@
 /* =================================================================
    Junsa Hwang — site interactions
-   Scroll progress, scroll-reveal, count-up stats, hero word
-   rotator, carousel drag/arrows, and the hwanglander easter egg.
+   Preloader, custom cursor, aurora atmosphere, magnetic UI, scroll
+   progress + reveal, count-up, hero rotator + char reveal, signature
+   draw-in, parallax, tilt cards, carousel, and the hwanglander egg.
    ================================================================= */
 
 /* ---- Carousel arrow controls (global, used by inline onclick) ---- */
@@ -13,7 +14,7 @@ function scrollCarousel(dir) {
   track.scrollBy({ left: dir * step, behavior: 'smooth' });
 }
 
-/* ---- hwanglander easter egg (personal page) ---- */
+/* ---- hwanglander easter egg ---- */
 function showEgg() {
   const audio = document.getElementById('eggAudio');
   const pop = document.getElementById('eggPop');
@@ -27,7 +28,6 @@ function showEgg() {
     audio.addEventListener('ended', hideEgg, { once: true });
   }
 }
-
 function hideEgg() {
   const audio = document.getElementById('eggAudio');
   const pop = document.getElementById('eggPop');
@@ -37,10 +37,43 @@ function hideEgg() {
   if (audio) { audio.pause(); audio.currentTime = 0; }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer  = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  /* Scroll progress bar */
+/* ---- Preloader: hide once the page is ready ---- */
+(function preloader() {
+  const pl = document.getElementById('preloader');
+  if (!pl) return;
+  const dismiss = () => {
+    pl.classList.add('done');
+    setTimeout(() => pl.remove(), 800);
+  };
+  window.addEventListener('load', () => setTimeout(dismiss, reduceMotion ? 200 : 1100));
+  // safety net in case load already fired / is slow
+  setTimeout(dismiss, 3200);
+})();
+
+/* ---- Inject atmosphere layers (aurora + grain) once ---- */
+(function atmosphere() {
+  if (document.querySelector('.atmosphere')) return;
+  const atmo = document.createElement('div');
+  atmo.className = 'atmosphere';
+  atmo.innerHTML = '<div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div>';
+  document.body.appendChild(atmo);
+  const grain = document.createElement('div');
+  grain.className = 'grain';
+  document.body.appendChild(grain);
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---- Nav: solidify on scroll ---- */
+  const nav = document.querySelector('.nav');
+  const onNavScroll = () => nav && nav.classList.toggle('scrolled', window.scrollY > 12);
+  window.addEventListener('scroll', onNavScroll, { passive: true });
+  onNavScroll();
+
+  /* ---- Scroll progress bar ---- */
   const progress = document.getElementById('progress');
   if (progress) {
     const update = () => {
@@ -52,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
   }
 
-  /* Scroll-reveal */
+  /* ---- Scroll-reveal (elements + staggered groups) ---- */
   const revealObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -61,22 +94,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  document.querySelectorAll('.reveal, .stagger').forEach((el) => revealObserver.observe(el));
 
-  /* Count-up stats */
+  /* ---- Count-up stats ---- */
   const animateCount = (el) => {
     const target = parseFloat(el.dataset.target) || 0;
     const decimals = parseInt(el.dataset.decimals || '0', 10);
     const prefix = el.dataset.prefix || '';
-    if (reduceMotion) { el.textContent = prefix + target.toFixed(decimals); return; }
-    const duration = 1400;
+    const suffix = el.dataset.suffix || '';
+    if (reduceMotion) { el.textContent = prefix + target.toFixed(decimals) + suffix; return; }
+    const duration = 1500;
     const start = performance.now();
     const tick = (now) => {
       const p = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = prefix + (target * eased).toFixed(decimals);
+      el.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
       if (p < 1) requestAnimationFrame(tick);
-      else el.textContent = prefix + target.toFixed(decimals);
+      else el.textContent = prefix + target.toFixed(decimals) + suffix;
     };
     requestAnimationFrame(tick);
   };
@@ -87,10 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.4 });
   document.querySelectorAll('.stat-num').forEach((el) => countObserver.observe(el));
 
-  /* Hero word rotator */
+  /* ---- Hero word rotator ---- */
   const rotator = document.getElementById('rotator');
   if (rotator && !reduceMotion) {
-    const words = ['goated', 'unbelievably handsome', 'an Ironman', 'amazing'];
+    const words = (rotator.dataset.words || 'goated,amazing').split(',');
     let i = 0;
     setInterval(() => {
       rotator.classList.add('swap');
@@ -102,23 +136,75 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2400);
   }
 
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-  /* Hero name → per-letter spans for hover pop */
-  const heroName = document.querySelector('.hero-name');
-  if (heroName && !heroName.dataset.split) {
+  /* ---- Hero name → per-letter spans (hover pop + intro reveal) ---- */
+  document.querySelectorAll('.hero-name').forEach((heroName) => {
+    if (heroName.dataset.split) return;
     heroName.dataset.split = '1';
+    const doReveal = heroName.classList.contains('reveal-chars') && !reduceMotion;
     const text = heroName.textContent;
     heroName.textContent = '';
-    [...text].forEach((ch) => {
+    [...text].forEach((ch, idx) => {
       const span = document.createElement('span');
       span.className = ch === ' ' ? 'ltr space' : 'ltr';
-      span.textContent = ch === ' ' ? ' ' : ch;
+      span.textContent = ch === ' ' ? ' ' : ch;
+      if (doReveal) span.style.setProperty('--i', idx);
       heroName.appendChild(span);
     });
+  });
+
+  /* ---- Signature draw-in (clip-path sweep) ---- */
+  const sig = document.querySelector('.hero-sig');
+  if (sig) {
+    if (reduceMotion) {
+      sig.classList.add('drawn');
+    } else if (sig.getBoundingClientRect().top < window.innerHeight) {
+      // above the fold: draw shortly after the preloader clears
+      setTimeout(() => sig.classList.add('drawn'), 1200);
+    } else {
+      const sObs = new IntersectionObserver((entries, obs) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          obs.unobserve(e.target);
+          sig.classList.add('drawn');
+        });
+      }, { threshold: 0.4 });
+      sObs.observe(sig);
+    }
   }
 
-  /* Cursor-following glow across the whole page */
+  /* ---- Custom cursor (fine pointers) ---- */
+  if (finePointer && !reduceMotion) {
+    const dot = document.createElement('div');
+    const ring = document.createElement('div');
+    dot.className = 'cursor-dot';
+    ring.className = 'cursor-ring';
+    document.body.append(dot, ring);
+    document.body.classList.add('custom-cursor');
+    let rx = window.innerWidth / 2, ry = window.innerHeight / 2, mx = rx, my = ry;
+    document.addEventListener('pointermove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+      document.body.classList.add('cursor-ready');
+    }, { passive: true });
+    const loop = () => {
+      rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+    const interactive = 'a, button, .path-card, .proj-card, .carousel-item, .life-card, .chip, .egg, input, textarea';
+    document.addEventListener('pointerover', (e) => {
+      if (e.target.closest(interactive)) ring.classList.add('hovering');
+    });
+    document.addEventListener('pointerout', (e) => {
+      if (e.target.closest(interactive)) ring.classList.remove('hovering');
+    });
+    document.addEventListener('pointerdown', () => ring.classList.add('pressing'));
+    document.addEventListener('pointerup', () => ring.classList.remove('pressing'));
+    document.addEventListener('pointerleave', () => document.body.classList.remove('cursor-ready'));
+  }
+
+  /* ---- Cursor-following page glow ---- */
   if (finePointer && !reduceMotion) {
     const glow = document.createElement('div');
     glow.className = 'cursor-glow';
@@ -137,25 +223,57 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('blur', () => glow.classList.remove('glow-on'));
   }
 
-  /* Path cards → 3D tilt toward the cursor + sheen */
+  /* ---- Magnetic buttons + nav name ---- */
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll('[data-magnetic], .btn').forEach((el) => {
+      const strength = 0.32;
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * strength;
+        const y = (e.clientY - r.top - r.height / 2) * strength;
+        el.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  /* ---- Path cards → 3D tilt toward cursor + sheen ---- */
   document.querySelectorAll('.path-card').forEach((card) => {
     if (!finePointer || reduceMotion) { card.classList.add('no-tilt'); return; }
-    const MAX = 7; // degrees
+    const MAX = 8;
     card.addEventListener('pointermove', (e) => {
       const r = card.getBoundingClientRect();
       const px = (e.clientX - r.left) / r.width;
       const py = (e.clientY - r.top) / r.height;
       const rx = (0.5 - py) * 2 * MAX;
       const ry = (px - 0.5) * 2 * MAX;
-      card.style.transform =
-        `translateY(-6px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      card.style.transform = `translateY(-6px) rotateX(${rx}deg) rotateY(${ry}deg)`;
       card.style.setProperty('--cx', px * 100 + '%');
       card.style.setProperty('--cy', py * 100 + '%');
     });
     card.addEventListener('pointerleave', () => { card.style.transform = ''; });
   });
 
-  /* Carousel drag-to-scroll */
+  /* ---- Parallax on tagged elements ---- */
+  if (!reduceMotion) {
+    const layers = document.querySelectorAll('[data-parallax]');
+    if (layers.length) {
+      let raf = 0;
+      const apply = () => {
+        layers.forEach((el) => {
+          const speed = parseFloat(el.dataset.parallax) || 0.1;
+          const r = el.getBoundingClientRect();
+          const offset = (r.top + r.height / 2 - window.innerHeight / 2) * speed;
+          el.style.transform = `translateY(${(-offset).toFixed(1)}px)`;
+        });
+        raf = 0;
+      };
+      window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(apply); }, { passive: true });
+      apply();
+    }
+  }
+
+  /* ---- Carousel drag-to-scroll ---- */
   const track = document.getElementById('carouselTrack');
   if (track) {
     let isDown = false, startX = 0, startScroll = 0, moved = false;

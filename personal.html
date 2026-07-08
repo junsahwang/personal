@@ -3,22 +3,28 @@
 <head>
 <meta charset=UTF-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=theme-color content="#0b0b0d">
 <meta name=description content="The off-the-clock Junsa Hwang — triathlon, violin, daily routine, and what's next. (i am hwanglander)">
 <title>Junsa Hwang | Personal</title>
-<link rel=stylesheet href=css/site.css>
 <link rel=preconnect href=https://fonts.googleapis.com>
 <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel=stylesheet>
+<link rel=stylesheet href=css/site.css>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css>
 <link rel="icon" type="image/svg+xml" href="imgs/jh.svg">
 <link rel="icon" type="image/png" href="imgs/jh.png">
 </head>
 <body>
+<div class=preloader id=preloader>
+<div class=pl-mark><span>J</span><span>H</span><span class=pl-dot>.</span></div>
+<div class=pl-bar></div>
+</div>
+
 <div class=progress id=progress></div>
 
 <header class=nav>
 <div class=nav-inner>
-<a class=nav-name href=index.html>Junsa Hwang</a>
+<a class=nav-name href=index.html data-magnetic><span class=nav-glyph>❋</span><span class=nav-word> Junsa Hwang</span></a>
 <nav class=nav-links>
 <a href=professional.html>Professional</a>
 <a href=personal.html aria-current=page>Personal</a>
@@ -30,8 +36,18 @@
 <main>
 <section class="hero wrap">
 <p class=eyebrow>Personal</p>
-<h1 class=hero-name>Off the clock</h1>
+<h1 class="hero-name reveal-chars">Off the clock</h1>
 <p class=hero-lead>When I'm not in the lab, I'm usually training, playing violin, or documenting the everyday. New hobbies get added almost every year — here's the current shape of it.</p>
+</section>
+
+<!-- STATS -->
+<section class="section wrap reveal">
+<div class="stats-grid stagger">
+<div class=stat><div class=stat-num data-target=70.3 data-decimals=1>0</div><div class=stat-label>Ironman miles, Jones Beach 2025</div></div>
+<div class=stat><div class=stat-num data-target=26.2 data-decimals=1>0</div><div class=stat-label>Miles rucked on the marathon route</div></div>
+<div class=stat><div class=stat-num data-target=13 data-suffix="+">0</div><div class=stat-label>Years of violin</div></div>
+<div class=stat><div class=stat-num data-target=100>0</div><div class=stat-label>Days of college, documented</div></div>
+</div>
 </section>
 
 <!-- HOBBIES -->
@@ -42,6 +58,7 @@
 <div class=hobby>
 <div class=hobby-media><img src=imgs/projects/projects9.png alt="Junsa at Ironman 70.3" loading=lazy></div>
 <div class=hobby-body>
+<span class=hobby-index>01</span>
 <h3>Morning miles</h3>
 <p>I race with the BU Club Triathlon Team and finished Ironman 70.3 Jones Beach in 6:31:16. I'm not a natural athlete — I just love the early mornings, the long miles, and the occasional 26.2-mile ruck on the Boston Marathon route.</p>
 </div>
@@ -50,6 +67,7 @@
 <div class=hobby>
 <div class=hobby-media><img src=imgs/home/home2.jpg alt="Junsa smiling" loading=lazy></div>
 <div class=hobby-body>
+<span class=hobby-index>02</span>
 <h3>Strings since six</h3>
 <p>I've played the violin for over a decade. It's the one constant through every move and season — a quiet reminder that progress compounds when you keep showing up.</p>
 </div>
@@ -58,6 +76,7 @@
 <div class=hobby>
 <div class=hobby-media><img src=imgs/projects/projects1.png alt="Documenting life on Instagram" loading=lazy></div>
 <div class=hobby-body>
+<span class=hobby-index>03</span>
 <h3>Documenting the everyday</h3>
 <p>My first semester of college, I filmed the first 100 days. I like keeping a record of the small stuff — it makes the big stuff easier to see.</p>
 </div>
@@ -66,6 +85,7 @@
 <div class=hobby>
 <div class=hobby-media><img src=imgs/projects/pokemon.jpg alt="Junsa's Pokémon card binder" loading=lazy></div>
 <div class=hobby-body>
+<span class=hobby-index>04</span>
 <h3>Gotta catch 'em all</h3>
 <p>No deep reason here — I just like it and collect for shits and gigs.</p>
 </div>
@@ -112,7 +132,7 @@
 <p class=eyebrow>The mix</p>
 <h2 class=section-title>Components of my life</h2>
 <p class=section-sub>The five things most of my time goes into.</p>
-<div class=life-grid>
+<div class="life-grid stagger">
 <div class=life-card><div class=life-icon>&#9881;&#65039;</div><div class=life-name>Engineering</div><div class=life-sub>CAD &middot; Controls</div></div>
 <div class=life-card><div class=life-icon>&#127946;</div><div class=life-name>Triathlon</div><div class=life-sub>Swim &middot; Bike &middot; Run</div></div>
 <div class=life-card><div class=life-icon>&#127931;</div><div class=life-name>Violin</div><div class=life-sub>Classical &middot; since 6</div></div>
