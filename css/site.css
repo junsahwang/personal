@@ -1,7 +1,7 @@
 /* =================================================================
    Junsa Hwang — site styles  ·  "Engineering Progress"
    Cinematic dark-luxe. Editorial serif display + Outfit body,
-   warm-gold accent on near-black, animated aurora, film grain,
+   molten-ember accent on near-black, animated aurora, film grain,
    custom cursor, magnetic UI. Shared across all pages.
    ================================================================= */
 
@@ -15,10 +15,10 @@
   --text:        #f5f2ec;
   --text-dim:    #a8a29a;
   --text-muted:  #6c665d;
-  --accent:      #e8a23c;   /* warm gold */
-  --accent-soft: #f4cf83;
-  --accent-deep: #c9822a;
-  --accent-glow: rgba(232, 162, 60, 0.5);
+  --accent:      #ff4f38;   /* molten ember */
+  --accent-soft: #ff9d85;
+  --accent-deep: #d63a24;
+  --accent-glow: rgba(255, 79, 56, 0.5);
   --radius:      16px;
   --radius-lg:   22px;
   --radius-sm:   11px;
@@ -53,7 +53,7 @@ h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
 img, video { max-width: 100%; display: block; }
 a { color: inherit; }
 
-::selection { background: var(--accent); color: #16110a; }
+::selection { background: var(--accent); color: #1c0a06; }
 
 .accent { color: var(--accent); }
 .serif  { font-family: var(--font-display); font-optical-sizing: auto; }
@@ -91,18 +91,18 @@ a { color: inherit; }
 }
 .aurora.a1 {
   top: -20vmax; left: -10vmax;
-  background: radial-gradient(circle, rgba(232,162,60,0.42), transparent 65%);
+  background: radial-gradient(circle, rgba(255,79,56,0.42), transparent 65%);
   animation: drift1 22s var(--ease) infinite alternate;
 }
 .aurora.a2 {
   bottom: -25vmax; right: -12vmax;
-  background: radial-gradient(circle, rgba(201,130,42,0.34), transparent 65%);
+  background: radial-gradient(circle, rgba(214,58,36,0.34), transparent 65%);
   animation: drift2 28s var(--ease) infinite alternate;
 }
 .aurora.a3 {
   top: 30%; left: 45%;
   width: 45vmax; height: 45vmax;
-  background: radial-gradient(circle, rgba(244,207,131,0.16), transparent 65%);
+  background: radial-gradient(circle, rgba(255,157,133,0.16), transparent 65%);
   animation: drift3 34s var(--ease) infinite alternate;
 }
 
@@ -134,8 +134,8 @@ a { color: inherit; }
   pointer-events: none;
   background: radial-gradient(
     480px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(232, 162, 60, 0.10),
-    rgba(232, 162, 60, 0.03) 42%,
+    rgba(255, 79, 56, 0.10),
+    rgba(255, 79, 56, 0.03) 42%,
     transparent 72%
   );
   opacity: 0;
@@ -162,7 +162,7 @@ a { color: inherit; }
 }
 .cursor-ring {
   width: 34px; height: 34px;
-  border: 1px solid rgba(244, 207, 131, 0.6);
+  border: 1px solid rgba(255, 157, 133, 0.6);
   transition: width 0.25s var(--ease), height 0.25s var(--ease),
               background 0.25s ease, border-color 0.25s ease, opacity 0.3s ease;
 }
@@ -170,7 +170,7 @@ body.cursor-ready .cursor-dot,
 body.cursor-ready .cursor-ring { opacity: 1; }
 .cursor-ring.hovering {
   width: 60px; height: 60px;
-  background: rgba(232, 162, 60, 0.10);
+  background: rgba(255, 79, 56, 0.10);
   border-color: var(--accent);
 }
 .cursor-ring.pressing { width: 26px; height: 26px; }
@@ -419,10 +419,12 @@ body.cursor-ready.custom-cursor button { cursor: none; }
 }
 .hero-sig {
   margin-top: 1.6rem;
-  max-width: 220px;
-  height: auto;
-  opacity: 0.9;
-  filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(357deg) brightness(1.05);
+  width: 220px;
+  aspect-ratio: 1577 / 653;
+  background: linear-gradient(110deg, var(--accent), var(--accent-soft));
+  -webkit-mask: url('../imgs/home/signature.png') no-repeat center / contain;
+          mask: url('../imgs/home/signature.png') no-repeat center / contain;
+  opacity: 0.95;
   clip-path: inset(0 100% 0 0);
   transition: clip-path 1.5s var(--ease) 0.35s;
 }
@@ -471,41 +473,6 @@ body.cursor-ready.custom-cursor button { cursor: none; }
 }
 
 /* =================================================================
-   MARQUEE
-   ================================================================= */
-.marquee {
-  position: relative;
-  overflow: hidden;
-  border-block: 1px solid var(--border-soft);
-  padding-block: 1.4rem;
-  margin-block: clamp(1rem, 4vw, 2rem);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
-.marquee-track {
-  display: flex;
-  gap: 3rem;
-  width: max-content;
-  animation: marquee 32s linear infinite;
-}
-.marquee:hover .marquee-track { animation-play-state: paused; }
-.marquee-item {
-  font-family: var(--font-display);
-  font-size: clamp(1.3rem, 3.4vw, 2rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--text-muted);
-  display: inline-flex;
-  align-items: center;
-  gap: 3rem;
-  white-space: nowrap;
-  transition: color 0.3s ease;
-}
-.marquee-item:hover { color: var(--text); }
-.marquee-item::after { content: '✦'; color: var(--accent); font-size: 0.7em; }
-@keyframes marquee { to { transform: translateX(-50%); } }
-
-/* =================================================================
    BUTTONS
    ================================================================= */
 .btn {
@@ -528,7 +495,7 @@ body.cursor-ready.custom-cursor button { cursor: none; }
 .btn i { transition: transform 0.3s var(--ease); }
 .btn:hover i.fa-arrow-right { transform: translateX(3px); }
 
-.btn-primary { background: var(--accent); color: #16110a; }
+.btn-primary { background: var(--accent); color: #1c0a06; }
 .btn-primary::before {
   content: '';
   position: absolute;
@@ -540,7 +507,7 @@ body.cursor-ready.custom-cursor button { cursor: none; }
 }
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 34px rgba(232, 162, 60, 0.35);
+  box-shadow: 0 14px 34px rgba(255, 79, 56, 0.35);
 }
 .btn-primary:hover::before { opacity: 1; }
 
@@ -584,7 +551,7 @@ body.cursor-ready.custom-cursor button { cursor: none; }
   pointer-events: none;
   background: radial-gradient(
     300px circle at var(--cx, 50%) var(--cy, 50%),
-    rgba(243, 200, 120, 0.14), transparent 62%);
+    rgba(255, 157, 133, 0.14), transparent 62%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -789,7 +756,7 @@ body.cursor-ready.custom-cursor button { cursor: none; }
   justify-content: center;
   gap: 0.5rem;
   background:
-    radial-gradient(circle at 30% 20%, rgba(232, 162, 60, 0.2), transparent 60%),
+    radial-gradient(circle at 30% 20%, rgba(255, 79, 56, 0.2), transparent 60%),
     var(--bg-elev-2);
   border-bottom: 1px solid var(--border);
   color: var(--accent);
@@ -847,7 +814,7 @@ body.cursor-ready.custom-cursor button { cursor: none; }
   text-decoration: none;
   transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s var(--ease), background 0.25s ease;
 }
-.chip:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); background: rgba(232,162,60,0.06); }
+.chip:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); background: rgba(255,79,56,0.06); }
 .skill-group { margin-top: 1.6rem; }
 .skill-group h4 { font-size: 1rem; color: var(--text); }
 
@@ -867,7 +834,7 @@ body.cursor-ready.custom-cursor button { cursor: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(232, 162, 60, 0.18), transparent 62%);
+  background: radial-gradient(circle at 50% 0%, rgba(255, 79, 56, 0.18), transparent 62%);
   pointer-events: none;
 }
 .letter-icon { font-size: 2.6rem; color: var(--accent); transition: transform 0.4s var(--ease); position: relative; z-index: 1; }
