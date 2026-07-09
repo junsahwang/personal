@@ -285,19 +285,24 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---- Carousel drag-to-scroll ---- */
   const track = document.getElementById('carouselTrack');
   if (track) {
-    let isDown = false, startX = 0, startScroll = 0, moved = false;
+    let isDown = false, startX = 0, startScroll = 0, moved = false, pid = null;
     track.addEventListener('pointerdown', (e) => {
       isDown = true; moved = false;
       startX = e.clientX;
       startScroll = track.scrollLeft;
-      track.classList.add('dragging');
-      track.setPointerCapture(e.pointerId);
+      pid = e.pointerId;
     });
     track.addEventListener('pointermove', (e) => {
       if (!isDown) return;
       const dx = e.clientX - startX;
-      if (Math.abs(dx) > 4) moved = true;
-      track.scrollLeft = startScroll - dx;
+      // Capture the pointer only once a real drag starts — capturing on
+      // pointerdown retargets the click away from card links (Chrome).
+      if (!moved && Math.abs(dx) > 4) {
+        moved = true;
+        track.classList.add('dragging');
+        try { track.setPointerCapture(pid); } catch (_) { /* stale pointer */ }
+      }
+      if (moved) track.scrollLeft = startScroll - dx;
     });
     const end = () => { isDown = false; track.classList.remove('dragging'); };
     track.addEventListener('pointerup', end);
