@@ -167,6 +167,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---- Typewriter intro on the home hero name ---- */
+  const typedName = document.querySelector('.hero-name.typed');
+  if (typedName && !reduceMotion) {
+    const letters = [...typedName.querySelectorAll('.ltr')];
+    letters.forEach((l) => l.classList.add('pending'));
+    const caret = document.createElement('span');
+    caret.className = 'type-caret';
+    if (letters.length) letters[0].before(caret);
+    let i = 0;
+    setTimeout(() => {
+      const timer = setInterval(() => {
+        if (i >= letters.length) {
+          clearInterval(timer);
+          setTimeout(() => caret.remove(), 2000);
+          return;
+        }
+        const l = letters[i++];
+        l.classList.remove('pending');
+        l.after(caret);
+      }, 95);
+    }, 1350);
+  }
+
   /* ---- Signature draw-in (clip-path sweep) ---- */
   const sig = document.querySelector('.hero-sig');
   if (sig) {

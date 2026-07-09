@@ -389,6 +389,19 @@ a { color: inherit; }
 }
 @keyframes charIn { to { opacity: 1; transform: none; } }
 
+/* typewriter intro (home hero name) */
+.hero-name .ltr.pending { visibility: hidden; }
+.type-caret {
+  display: inline-block;
+  width: 0.05em;
+  height: 0.85em;
+  margin-left: 0.05em;
+  background: var(--text);
+  vertical-align: baseline;
+  animation: caretBlink 0.9s steps(2, start) infinite;
+}
+@keyframes caretBlink { 50% { opacity: 0; } }
+
 .hero-rotator {
   font-size: clamp(1.35rem, 4vw, 2.1rem);
   font-weight: 500;
@@ -608,8 +621,17 @@ a { color: inherit; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
   transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
 }
+.carousel-link-arrow {
+  font-size: 0.7em;
+  color: var(--text-dim);
+  margin-left: 0.3rem;
+  transition: transform 0.3s var(--ease), color 0.3s ease;
+}
+a.carousel-item:hover .carousel-link-arrow { transform: translateX(3px); color: var(--text); }
 .carousel-item:hover { transform: translateY(-6px); border-color: var(--accent); }
 .carousel-item img {
   width: 100%;
