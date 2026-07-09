@@ -610,10 +610,8 @@ a { color: inherit; }
   scroll-snap-type: x mandatory;
   padding-bottom: 1.25rem;
   scrollbar-width: none;
-  cursor: grab;
 }
 .carousel-track::-webkit-scrollbar { display: none; }
-.carousel-track.dragging { cursor: grabbing; scroll-behavior: auto; }
 .carousel-item {
   flex: 0 0 clamp(15rem, 60vw, 19rem);
   scroll-snap-align: start;
