@@ -99,26 +99,26 @@
 <p class=section-sub>Drag, swipe, or use the arrows.</p>
 <div class=carousel>
 <div class=carousel-track id=carouselTrack>
-<article class=carousel-item>
+<a class=carousel-item href="https://www.ironman.com/races/im703-new-york/results" target=_blank rel=noopener>
 <img src=imgs/projects/projects9.png alt="Ironman 70.3" loading=lazy>
-<h4>Ironman 70.3</h4>
+<h4>Ironman 70.3 <i class="fas fa-arrow-right carousel-link-arrow"></i></h4>
 <p>Jones Beach, NY 2025 — 6:31:16 finish.</p>
-</article>
-<article class=carousel-item>
+</a>
+<a class=carousel-item href="#" onclick="showRuck(event)">
 <img src=imgs/projects/projects4.jpg alt="Tough Ruck" loading=lazy>
-<h4>Tough Ruck</h4>
+<h4>Tough Ruck <i class="fas fa-expand carousel-link-arrow"></i></h4>
 <p>26.2-mile ruck on the Boston Marathon route, 2025.</p>
-</article>
-<a class=carousel-item href=https://www.instagram.com/junsahwang/ target=_blank rel=noopener>
+</a>
+<a class=carousel-item href=https://www.instagram.com/junsahwang/reels/ target=_blank rel=noopener>
 <img src=imgs/projects/projects1.png alt="Documenting my life" loading=lazy>
 <h4>Documenting My Life <i class="fas fa-arrow-right carousel-link-arrow"></i></h4>
 <p>The first 100 days of college, on camera.</p>
 </a>
-<article class=carousel-item>
+<a class=carousel-item href="https://www.svcoc.org/2022/11/07/homestead-fbla-club-wins-1st-place/" target=_blank rel=noopener>
 <img src=imgs/projects/projects2.png alt="FBLA national finalist" loading=lazy>
-<h4>FBLA Finalist</h4>
+<h4>FBLA Finalist <i class="fas fa-arrow-right carousel-link-arrow"></i></h4>
 <p>Top 3 of 12,000 nationally — 2022.</p>
-</article>
+</a>
 </div>
 <div class=carousel-nav>
 <button class=carousel-btn aria-label=Previous onclick="scrollCarousel(-1)"><i class="fas fa-arrow-left"></i></button>
@@ -162,6 +162,24 @@
 </div>
 </div>
 </footer>
+
+<!-- Tough Ruck official result popup -->
+<div class=result-overlay id=ruckOverlay onclick=hideRuck()></div>
+<div class=result-pop id=ruckPop role=dialog aria-modal=true aria-label="Tough Ruck 2025 official result">
+<button class=result-close onclick=hideRuck() aria-label=Close><i class="fas fa-times"></i></button>
+<p class=eyebrow>Tough Ruck Marathon &middot; 2025</p>
+<div class=result-time>7:15:47</div>
+<div class=result-name>#544 &middot; Junsa Hwang</div>
+<div class=result-grid>
+<div class=result-cell><span>Place</span>301</div>
+<div class=result-cell><span>Division place</span>78</div>
+<div class=result-cell><span>Division</span>Uniformed Heavy Male</div>
+<div class=result-cell><span>Pace</span>16:38 /mi</div>
+<div class=result-cell><span>Gun time</span>7:16:03</div>
+<div class=result-cell><span>Age</span>18</div>
+</div>
+<p class=result-foot>26.2 miles on the Boston Marathon route &middot; official net time</p>
+</div>
 
 <div class=egg-overlay id=eggOverlay onclick=hideEgg()></div>
 <div class=egg-pop id=eggPop><img src=imgs/hwanglander.png alt=hwanglander draggable=false></div>

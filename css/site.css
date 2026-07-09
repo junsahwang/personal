@@ -893,6 +893,79 @@ a.carousel-item:hover .carousel-link-arrow { transform: translateX(3px); color: 
 .footer-socials a:hover { color: var(--accent); transform: translateY(-4px); }
 .footer-copy { color: var(--text-muted); font-size: 0.85rem; width: 100%; }
 
+/* Result popup (Tough Ruck) */
+.result-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 998;
+}
+.result-pop {
+  display: none;
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.92);
+  z-index: 999;
+  width: min(92vw, 460px);
+  background: linear-gradient(180deg, var(--bg-elev), var(--bg-2));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 2.25rem 2rem 1.9rem;
+  text-align: center;
+}
+.result-pop.open, .result-overlay.open { display: block; }
+.result-pop.open { animation: resultIn 0.35s var(--ease) forwards; }
+@keyframes resultIn { to { transform: translate(-50%, -50%) scale(1); } }
+.result-close {
+  position: absolute;
+  top: 0.9rem; right: 0.9rem;
+  width: 2.2rem; height: 2.2rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+.result-close:hover { color: var(--text); border-color: var(--text-dim); }
+.result-pop .eyebrow { justify-content: center; }
+.result-time {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 9vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1;
+}
+.result-name { margin-top: 0.5rem; color: var(--text-dim); font-size: 0.95rem; }
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+.result-cell {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.result-cell span {
+  display: block;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+.result-foot { margin-top: 1.25rem; color: var(--text-muted); font-size: 0.82rem; }
+@media (max-width: 480px) {
+  .result-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* hwanglander easter egg */
 .egg { color: var(--bg); font-size: 0.85rem; cursor: default; user-select: none; }
 .egg:hover { color: var(--text-muted); }

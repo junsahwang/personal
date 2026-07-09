@@ -37,6 +37,23 @@ function hideEgg() {
   if (audio) { audio.pause(); audio.currentTime = 0; }
 }
 
+/* ---- Tough Ruck result popup (personal page) ---- */
+function showRuck(e) {
+  if (e) e.preventDefault();
+  const pop = document.getElementById('ruckPop');
+  const overlay = document.getElementById('ruckOverlay');
+  if (!pop || !overlay) return;
+  pop.classList.add('open');
+  overlay.classList.add('open');
+}
+function hideRuck() {
+  const pop = document.getElementById('ruckPop');
+  const overlay = document.getElementById('ruckOverlay');
+  if (pop) pop.classList.remove('open');
+  if (overlay) overlay.classList.remove('open');
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideRuck(); });
+
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer  = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
