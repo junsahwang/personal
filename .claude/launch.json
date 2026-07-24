@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "4599"],
       "port": 4599
+    },
+    {
+      "name": "lynx",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "-d", "/Users/junsahwang/Documents/Lynx-Media-Group", "4601"],
+      "port": 4601
     }
   ]
 }
